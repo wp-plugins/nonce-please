@@ -50,6 +50,8 @@ Q: Will Akismet no use when I use "Nonce! Please"?
 A: No. This plugin detect only bulk feedbacks that are sent to hard-coded comment/trackback URLs as "http://blog.example.com/wp-trackback.php?p=NNN." I suggest keep using Akismet. You will see fewer spams at Akismet admin screen!
 
 == History ==
+* Version 1.1.1 (2009-06-08)
+	* At version 1.1.1, fixed the error that the nonce is not properly checked and spams are passed through.
 * Version 1.1 (2009-03-23)
 	* Skip checking a nonce for log-in users. Therefore, you can reply a comment at the admin panel without errors.
 * Version 1.0 (2008-07-07)
