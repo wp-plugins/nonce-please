@@ -4,7 +4,7 @@ Plugin Name: Nonce, Please!
 Plugin URI: http://www.yuriko.net/dist/nonce_please/
 Description: Add and confirm wpnonce for comments and trackbacks.
 Author: IKEDA Yuriko
-Version: 1.1.0
+Version: 1.1.1
 Author URI: http://www.yuriko.net/cat/wordpress/
 */
 
@@ -86,7 +86,7 @@ function add_tr_nonce($tb_url) {
 }
 
 function confirm_nonce($commentdata) {
-	if ($commentdata['comment_type'] != 'pingback') {
+	if ($commentdata['comment_type'] == 'pingback') {
 		return $commentdata;
 	}
 	if (! isset($commentdata['comment_post_ID'])) {
@@ -107,7 +107,10 @@ function confirm_nonce($commentdata) {
 			}
 		default:
 			$user = wp_get_current_user();
-			if (! isset($user->ID) && ! isset($_POST[NONCE_FIELD]) || ! $this->verify_anon_nonce($_POST[NONCE_FIELD], COMMENT_NONCE_ACTION . intval($commentdata['comment_post_ID']))) {
+			if ( ( !isset($user->ID) || !$user->ID ) 
+			&& 
+			( !isset($_POST[NONCE_FIELD]) || 
+			  !$this->verify_anon_nonce($_POST[NONCE_FIELD], COMMENT_NONCE_ACTION . intval($commentdata['comment_post_ID'])) ) ) {
 				wp_die(__('Error: Please back to comment form, and retry submit.', 'nonce_please'));
 				exit;
 			}
