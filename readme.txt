@@ -1,9 +1,9 @@
 === Nonce! Please ===
-Contributors: lilyfan (IKEDA Yuriko)
+Contributors: IKEDA Yuriko (lilyfan)
 Tags: comment, trackback, spam, anti spam
 Requires at least: 2.3
-Tested up to: 2.7
-Stable tag: 1.1.0
+Tested up to: 2.8
+Stable tag: 1.1.1
 
 "Nonce! Please" is a simple plugin that prevents brute-force comments and trackbacks from spammer. This is *NOT* an alternatives to Akismet.
 

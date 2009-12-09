@@ -1,9 +1,9 @@
 === Nonce! Please ===
-作者: lilyfan (IKEDA Yuriko)
+作者: IKEDA Yuriko (lilyfan)
 タグ: comment, trackback, spam, anti spam
 必須バージョン: 2.3 以降
-テスト済バージョン: 2.7 まで
-安定版: 1.1.0
+テスト済バージョン: 2.8 まで
+安定版: 1.1.1
 
 「Nonce! Please」は、スパマーからの力任せなコメント・トラックバックを阻止するという単純なプラグインです。これは、Akismet の代わりとなるもの *ではありません*。
 
