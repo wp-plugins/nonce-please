@@ -1,9 +1,9 @@
 === Nonce! Please ===
-Contributors: IKEDA Yuriko (lilyfan)
-Tags: comment, trackback, spam, anti spam
+Contributors: lilyfan
+Tags: anti spam, spam, comment, trackback
 Requires at least: 2.3
-Tested up to: 2.8
-Stable tag: 1.1.1
+Tested up to: 2.9
+Stable tag: 1.1.2
 
 "Nonce! Please" is a simple plugin that prevents brute-force comments and trackbacks from spammer. This is *NOT* an alternatives to Akismet.
 
@@ -18,6 +18,10 @@ This plugins also verifies that a new comment/trackbacks has the valid nonce. If
 
 Adding and verifying nonce is automatic, users are not do anything!
 
+== Screenshots ==
+
+1. A random string (nonce) is added to the trackback URI.
+
 == Requirements ==
 
 * WordPress 2.3 or lator
@@ -25,11 +29,8 @@ Adding and verifying nonce is automatic, users are not do anything!
 
 == Installation ==
 
-"Nonce! Please" can be installed in 2 steps:
-
-	1. Unzip "nonce_pleaseNNN.zip" archive and put only the nonce_please.php file into your "plugins" directory (wp-content/plugins/) of the server.
-
-	2. Activate the plugin.
+1. Unzip a zip archive and put only the nonce_please.php file into your "plugins" directory (wp-content/plugins/) of the server.
+1. Activate the plugin.
 
 == Licence ==
 
@@ -41,7 +42,7 @@ The licence of this plugin is GPL v2.
 
 == Getting a support ==
 
-To get support for this plugin, please send an email to ikeda.yuriko+wp-nonce_please _@_ GMAIL COM. (You need adjust to valid address)
+To get support for this plugin, please send an email to ikeda.yuriko+nonceplease _@_ GMAIL COM. (You need adjust to valid address)
 
 == Frequently Asked Questions ==
 
@@ -49,10 +50,21 @@ Q: Will Akismet no use when I use "Nonce! Please"?
 
 A: No. This plugin detect only bulk feedbacks that are sent to hard-coded comment/trackback URLs as "http://blog.example.com/wp-trackback.php?p=NNN." I suggest keep using Akismet. You will see fewer spams at Akismet admin screen!
 
-== History ==
-* Version 1.1.1 (2009-06-08)
-	* At version 1.1.1, fixed the error that the nonce is not properly checked and spams are passed through.
-* Version 1.1 (2009-03-23)
-	* Skip checking a nonce for log-in users. Therefore, you can reply a comment at the admin panel without errors.
-* Version 1.0 (2008-07-07)
-	* Initial version
+== Changelog ==
+
+= 1.1.2 (2010-01-06) =
+* Fix HTML syntax error at displaying a trackback URL when using standard permalink (?p=NNNN etc)
+
+= 1.1.1 (2009-06-08) =
+* At version 1.1.1, fixed the error that the nonce is not properly checked and spams are passed through.
+
+= 1.1 (2009-03-23) =
+* Skip checking a nonce for log-in users. Therefore, you can reply a comment at the admin panel without errors.
+
+= 1.0 (2008-07-07) =
+* Initial version
+
+== Upgrade Notice == 
+
+= 1.1.2 =
+The weblog using standard permalink (like ?p=1234) should upgrade. The syntax error at trackback URL will repaired.
