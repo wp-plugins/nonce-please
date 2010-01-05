@@ -3,7 +3,7 @@ Contributors: lilyfan
 Tags: anti spam, spam, comment, trackback
 Requires at least: 2.3
 Tested up to: 2.9
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 
 "Nonce! Please" is a simple plugin that prevents brute-force comments and trackbacks from spammer. This is *NOT* an alternatives to Akismet.
 
@@ -42,7 +42,7 @@ The licence of this plugin is GPL v2.
 
 == Getting a support ==
 
-To get support for this plugin, please send an email to ikeda.yuriko+wp-nonce_please _@_ GMAIL COM. (You need adjust to valid address)
+To get support for this plugin, please send an email to ikeda.yuriko+nonceplease _@_ GMAIL COM. (You need adjust to valid address)
 
 == Frequently Asked Questions ==
 
@@ -52,7 +52,7 @@ A: No. This plugin detect only bulk feedbacks that are sent to hard-coded commen
 
 == Changelog ==
 
-= 1.1.2 (2010-01-xx) =
+= 1.1.2 (2010-01-06) =
 * Fix HTML syntax error at displaying a trackback URL when using standard permalink (?p=NNNN etc)
 
 = 1.1.1 (2009-06-08) =
