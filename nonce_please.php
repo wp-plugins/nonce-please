@@ -1,13 +1,13 @@
 <?php
 /*
 Plugin Name: Nonce, Please!
-Plugin URI: http://wordpress.org/extend/plugins/nonce_please/
-Version: 1.1.2
+Plugin URI: http://wordpress.org/extend/plugins/nonce-please/
+Version: 1.1.3
 Description: Add and confirm random nonce for comments and trackbacks to prevent spam.
 Author: IKEDA Yuriko
 Author URI: http://en.yuriko.net/
 Text Domain: nonce_please
-Domain Path: lang/
+Domain Path: /languages
 */
 
 /*  Copyright (c) 2008-2010 IKEDA Yuriko
@@ -39,7 +39,7 @@ define('TRACKBACK_NONCE_ACTION', 'send-trackbacks_');
 class NoncePlease {
 	var $plugin_dir;
 	var $text_domain = 'nonce_please';
-	var $domain_path = '/lang';
+	var $domain_path = '/languages';
 	var $textdomain_loaded = false;
 
 function NoncePlease() {
