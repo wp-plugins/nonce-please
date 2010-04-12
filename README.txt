@@ -1,9 +1,9 @@
 === Nonce! Please ===
 Contributors: lilyfan
-Tags: anti spam, spam, comment, trackback, nonce
+Tags: anti spam, spam, comment, trackback
 Requires at least: 2.3
-Tested up to: 2.9
-Stable tag: 1.1.3
+Tested up to: 3.0
+Stable tag: 1.1.2
 
 "Nonce! Please" is a simple plugin that prevents brute-force comments and trackbacks from spammer. This is *NOT* an alternatives to Akismet.
 
@@ -24,17 +24,17 @@ Adding and verifying nonce is automatic, users are not do anything!
 
 == Requirements ==
 
-* WordPress 2.3 or later
-* PHP 4.2 or later
+* WordPress 2.3 or lator
+* PHP 4.2 or lator
 
 == Installation ==
 
-1. Unzip a zip archive and put only the nonce_please.php file into your "plugins" directory (wp-content/plugins/) of the server.
+1. Unzip a zip archive and put only the nonce_please.php file into your plugins directory (may be `wp-content/plugins`) of the server.
 1. Activate the plugin.
 
 == Licence ==
 
-The license of this plugin is GPL v2.
+The licence of this plugin is GPL v2.
 
 == Restrictions ==
 
@@ -50,12 +50,19 @@ Q: Will Akismet no use when I use "Nonce! Please"?
 
 A: No. This plugin detect only bulk feedbacks that are sent to hard-coded comment/trackback URLs as "http://blog.example.com/wp-trackback.php?p=NNN." I suggest keep using Akismet. You will see fewer spams at Akismet admin screen!
 
+== Translations ==
+
+* Belarusian (be) - [Marcis G.](http://pc.de/)
+* Japanese (ja) - [IKEDA Yuriko](http://en.yuriko.net/)
+
 == Changelog ==
 
-= 1.1.3 (2010-04-xx) =
+= 1.2.0 (2010-04-xx) =
+* Error messages are now translated.
+* Add Belarusian(be) translation.
 * Fixed the URL of the Plugin URI.
 * Change the name of languages resource directory from "lang" into "languages".
-* Fixed the problem not translated the plugin information (description, author name, etc) at plugin admin panel.
+* Fix the language resouce path to show translated description, author name properly.
 
 = 1.1.2 (2010-01-06) =
 * Fix HTML syntax error at displaying a trackback URL when using standard permalink (?p=NNNN etc)
