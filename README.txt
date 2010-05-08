@@ -48,7 +48,7 @@ To get support for this plugin, please send an email to ikeda.yuriko+nonceplease
 
 Q: Will Akismet no use when I use "Nonce, Please!"?
 
-A: No. This plugin detect only bulk feedbacks that are sent to hard-coded comment/trackback URLs as "http://blog.example.com/wp-trackback.php?p=NNN." I suggest keep using Akismet. You will see fewer spams at Akismet admin screen!
+A: No. This plugin detect only bulk feedbacks that are sent to hard-coded comment/trackback URLs as "http://blog.example.com/wp-trackback.php?p=NNN." I suggest keep using Akismet. You will see fewer spams at Akismet admin panel!
 
 == Translations ==
 

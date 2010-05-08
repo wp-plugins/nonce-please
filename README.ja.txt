@@ -48,7 +48,7 @@ Akismet は、スパムコメント／トラックバックをブロックする
 
 Q: 「Nonce, Please!」を使うと Akismet は無用ですか。
 
-A: いいえ。このプラグインは、「http://blog.example.com/wp-trackback.php?p=NNN.」のような決め打ちのコメント／トラックバック URL に送られた大量のフィードバックを検出するだけです。Akismet の使用は続けることをおすすめします。Akismet の管理画面でスパムが減ることが分かるでしょう!
+A: いいえ。このプラグインは、「http://blog.example.com/wp-trackback.php?p=NNN.」のような決め打ちのコメント／トラックバック URL に送られた大量のフィードバックを検出するだけです。Akismet の使用は続けることをおすすめします。Akismet の管理パネルでスパムが減ることが分かるでしょう!
 
 == 改版履歴==
 
