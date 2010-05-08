@@ -1,11 +1,11 @@
-=== Nonce! Please ===
+=== Nonce, Please! ===
 Contributors: lilyfan
 Tags: anti spam, spam, comment, trackback
 Requires at least: 2.3
 Tested up to: 3.0
 Stable tag: 1.2.0
 
-"Nonce! Please" is a simple plugin that prevents brute-force comments and trackbacks from spammer. This is *NOT* an alternatives to Akismet.
+"Nonce, Please!" is a simple plugin that prevents brute-force comments and trackbacks from spammer. This is *NOT* an alternatives to Akismet.
 
 == Description ==
 
@@ -13,7 +13,7 @@ Akismet is a great plugin to block spam comments/trackbacks. It detects spams co
 
 Also, the architecture of WordPress is vulnerable for spammer. Because the comment API is fixed URL like: "wp-comments-post.php", "wp-trackback.php, or "http://blog.example.com/archives/99/trackback/". Therefore, spammers can easily post bulk comments/trackbacks to WordPress weblogs.
 
-"Nonce! Please" add a nonce (random strings) to the comment hidden field and/or the trackback URL. A valid comment and/or trackback should have a nonce string. Bulk feedbacks will not have nonce.
+"Nonce, Please!" add a nonce (random strings) to the comment hidden field and/or the trackback URL. A valid comment and/or trackback should have a nonce string. Bulk feedbacks will not have nonce.
 This plugins also verifies that a new comment/trackbacks has the valid nonce. If there is no nonce or an invalid one, the feedback is rejected.
 
 Adding and verifying nonce is automatic, users are not do anything!
@@ -24,17 +24,17 @@ Adding and verifying nonce is automatic, users are not do anything!
 
 == Requirements ==
 
-* WordPress 2.3 or lator
-* PHP 4.2 or lator
+* WordPress 2.3 or later
+* PHP 4.2 or later
 
 == Installation ==
 
 1. Unzip a zip archive and put only the nonce_please.php file into your plugins directory (may be `wp-content/plugins`) of the server.
 1. Activate the plugin.
 
-== Licence ==
+== License ==
 
-The licence of this plugin is GPL v2.
+The license of this plugin is GPL v2.
 
 == Restrictions ==
 
@@ -46,9 +46,9 @@ To get support for this plugin, please send an email to ikeda.yuriko+nonceplease
 
 == Frequently Asked Questions ==
 
-Q: Will Akismet no use when I use "Nonce! Please"?
+Q: Will Akismet no use when I use "Nonce, Please!"?
 
-A: No. This plugin detect only bulk feedbacks that are sent to hard-coded comment/trackback URLs as "http://blog.example.com/wp-trackback.php?p=NNN." I suggest keep using Akismet. You will see fewer spams at Akismet admin screen!
+A: No. This plugin detect only bulk feedbacks that are sent to hard-coded comment/trackback URLs as "http://blog.example.com/wp-trackback.php?p=NNN." I suggest keep using Akismet. You will see fewer spams at Akismet admin panel!
 
 == Translations ==
 
@@ -58,6 +58,7 @@ A: No. This plugin detect only bulk feedbacks that are sent to hard-coded commen
 == Changelog ==
 
 = 1.2.0 (2010-05-08) =
+* Unified the plugin name to "Nonce, Please!" along the nonce_please.php file. "Nonce! Please" is now a wrong spelling.
 * Error messages are now translated.
 * Add Belarusian(be) translation.
 * Fixed the URL of the Plugin URI.

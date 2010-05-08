@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Nonce, Please!
-Plugin URI: http://wordpress.org/extend/plugins/nonce_please/
+Plugin URI: http://wordpress.org/extend/plugins/nonce-please/
 Version: 1.2.0
 Description: Add and confirm random nonce for comments and trackbacks to prevent spam.
 Author: IKEDA Yuriko
