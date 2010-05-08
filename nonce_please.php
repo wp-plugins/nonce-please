@@ -2,12 +2,12 @@
 /*
 Plugin Name: Nonce, Please!
 Plugin URI: http://wordpress.org/extend/plugins/nonce_please/
-Version: 1.1.2
+Version: 1.2.0
 Description: Add and confirm random nonce for comments and trackbacks to prevent spam.
 Author: IKEDA Yuriko
 Author URI: http://en.yuriko.net/
 Text Domain: nonce_please
-Domain Path: lang/
+Domain Path: /languages
 */
 
 /*  Copyright (c) 2008-2010 IKEDA Yuriko
@@ -39,19 +39,19 @@ define('TRACKBACK_NONCE_ACTION', 'send-trackbacks_');
 class NoncePlease {
 	var $plugin_dir;
 	var $text_domain = 'nonce_please';
-	var $domain_path = '/lang';
+	var $domain_path = '/languages';
 	var $textdomain_loaded = false;
 
 function NoncePlease() {
-	return __construct();
+	return $this->__construct();
 }
 
 /* ==================================================
  * @param	none
  * @return	none
  * @since	1.1.0
+ * @access	public
  */
-//public 
 function __construct() {
 	$this->plugin_dir = basename(dirname(__FILE__));
 	add_action('plugins_loaded', array($this, 'load_textdomain'));
@@ -69,13 +69,12 @@ function __construct() {
  * @param	none
  * @return	none
  * @since	1.1.2
+ * @access	public
  */
-//public 
 function load_textdomain() {
-	if (! $this->textdomain_loaded) {
+	if ( !$this->textdomain_loaded ) {
 		$lang_dir = $this->plugin_dir . $this->domain_path;
-		$plugin_path = defined('PLUGINDIR') ? PLUGINDIR . '/' : 'wp-content/plugins/';
-		load_plugin_textdomain($this->text_domain, $plugin_path . $lang_dir, $lang_dir);
+		load_plugin_textdomain($this->text_domain, PLUGINDIR . '/' . $lang_dir, $lang_dir);
 		$this->textdomain_loaded = true;
 	}
 }
@@ -84,22 +83,24 @@ function load_textdomain() {
  * @param	none
  * @return	int  $tick
  * @since	1.0.0
+ * @access	private
  */
-//private 
 function nonce_tick() {
 	if (function_exists('wp_nonce_tick')) {
-		return wp_nonce_tick();
+		$tick = wp_nonce_tick();
 	} else {
-		return ceil(time() / 43200);
+		$nonce_life = apply_filters('nonce_life', 86400);
+		$tick = ceil(time() / ( $nonce_life / 2 ));
 	}
+	return $tick;
 }
 
 /* ==================================================
  * @param	string $action
  * @return	string $nonce
  * @since	1.0.0
+ * @access	public
  */
-//public 
 function create_anon_nonce($action) {
 	$i = $this->nonce_tick();
 	return attribute_escape(substr(wp_hash($i . $action), -12, 10));
@@ -110,8 +111,8 @@ function create_anon_nonce($action) {
  * @param	string  $action
  * @return	boolean $valid
  * @since	1.0.0
+ * @access	public
  */
-//public 
 function verify_anon_nonce($nonce, $action = -1) {
 	$i = $this->nonce_tick();
 	// Nonce generated 0-12 hours ago
@@ -128,8 +129,8 @@ function verify_anon_nonce($nonce, $action = -1) {
  * @param	int $post_id
  * @return	none
  * @since	1.0.0
+ * @access	public
  */
-//public 
 function add_comment_nonce($post_id) {
 	printf('<input type="hidden" id="%s" name="%s" value="%s" />', 
 		attribute_escape(NONCE_FIELD), attribute_escape(NONCE_FIELD), 
@@ -141,8 +142,8 @@ function add_comment_nonce($post_id) {
  * @param	string $url
  * @return	string $url
  * @since	1.0.0
+ * @access	public
  */
-//public 
 function add_trrackback_nonce($url) {
 	global $id;
 	$url .= sprintf('%s%s=%s', 
@@ -158,37 +159,34 @@ function add_trrackback_nonce($url) {
  * @param	array $commentdata
  * @return	array $commentdata
  * @since	1.0.0
+ * @access	public
  */
-//public 
 function confirm_nonce($commentdata) {
 	if ($commentdata['comment_type'] == 'pingback') {
 		return $commentdata;
 	}
-	if ( !isset($commentdata['comment_post_ID'])) {
+	$comment_post_ID = isset($commentdata['comment_post_ID']) ? intval($commentdata['comment_post_ID']) : NULL;
+	if ( empty($comment_post_ID) ) {
 		switch ($commentdata['comment_type']) {
 		case 'trackback':
 			trackback_response(1, 'We cannot accept a trackback without post ID.');
 			exit;
 		default:
-			wp_die(__('Error: Invalid comment form. Please add the comment post ID field.', 'nonce_please'));
+			wp_die(__('Error: Invalid comment form. There is no comment post ID field.', 'nonce_please'));
+			exit;
 		}
-		exit;
 	} else {
 		switch ($commentdata['comment_type']) {
 		case 'trackback':		
 			if (!isset($_GET[NONCE_FIELD]) 
-			|| !$this->verify_anon_nonce($_GET[NONCE_FIELD], TRACKBACK_NONCE_ACTION . intval($commentdata['comment_post_ID']))
+			|| !$this->verify_anon_nonce($_GET[NONCE_FIELD], TRACKBACK_NONCE_ACTION . $comment_post_ID)
 			) {
 				trackback_response(1, 'We cannot accept your trackback.');
 				exit;
 			}
 		default:
-			$user = wp_get_current_user();
-			if ( ( !isset($user->ID) || !$user->ID ) 
-			&& 
-			( !isset($_POST[NONCE_FIELD]) 
-			  || !$this->verify_anon_nonce($_POST[NONCE_FIELD], COMMENT_NONCE_ACTION . intval($commentdata['comment_post_ID'])) ) 
-			) {
+			if ( !is_user_logged_in() && 
+			( !isset($_POST[NONCE_FIELD]) || !$this->verify_anon_nonce($_POST[NONCE_FIELD], COMMENT_NONCE_ACTION . $comment_post_ID) ) ) {
 				wp_die(__('Error: Please back to comment form, and retry submit.', 'nonce_please'));
 				exit;
 			}
@@ -200,6 +198,7 @@ function confirm_nonce($commentdata) {
 // ===== End of class ====================
 }
 
+global $NoncePlease;
 $NoncePlease = new NoncePlease();
 endif;
 ?>
